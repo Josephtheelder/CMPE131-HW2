@@ -1,20 +1,17 @@
 import time
 
 def calculate_time(func):
-
-    def inner1():
-     
+   def inner1():
+    
         begin = time.time()
     
         timer()
         
-    
         end = time.time()
-    
      
         print("Total time ",end - begin)
     return inner1
- 
+
 def timer():
     time.sleep(2)
 
