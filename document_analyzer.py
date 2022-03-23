@@ -22,5 +22,5 @@ j=0
 for i in sortdict.keys():
   if j==5:
     break
-  print(str(i)+":"+str(sortdict[i]))     
+  print(str(i)+": "+str(sortdict[i]))     
   j+=1
