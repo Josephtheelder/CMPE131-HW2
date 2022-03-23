@@ -1,24 +1,26 @@
-import operator
+test_str="A few months ago, I decided to deaccession an assortment of my things by whatever means feasible: selling, donating, recycling, giving them away, losing them on the subway, or reserving a spot for them on the next Mars Explorer. I gathered my unwanteds and piled them in the living room. A fraction of what was in that jumble: seven antique glass cake stands that belonged to my mother; a dormitory’s worth of new sheet sets and blankets for a bed size that is not mine; a set of Lenox china that my grandmother gave to my mother, who gave it to me, and was never used; clothes galore; a Viking stove grate that arrived cracked, and which I saved because I planned to weld it into a sculpture someday, after I learned how to weld; several rolls of Trump toilet paper that I wrongly thought were amusing a few years ago. I wish I could have added my boyfriend’s too large Le Corbusier lounger. (There are Web sites, such as NeverLikedItAnyway.com, that will buy your ex’s leavings, ranging from engagement rings to “Rick and Morty” socks.)"
+punc = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+ 
 
-f1 = open("document.txt", "r")
-d={}
-for i in f1:
-for j in i.split():
-if j[len(j)-1]=="." or j[len(j)-1]=="," or j[len(j)-1]==":" or j[len(j)-1]==";":
-j=j[:len(j)-2:]
-if j not in d:
-d[j]=1
-else:
-d[j]+=1
+for ele in test_str:
+    if ele in punc:
+        test_str = test_str.replace(ele, "")
+ 
 
-lex_sorted = {val[0] : val[1] for val in sorted(d.items(), key = lambda x: (-x[1], x[0]))}
+l=test_str.split()
 
-sorted_d=dict(sorted(lex_sorted.items(),key=operator.itemgetter(1),reverse=True))
+dict1={}
+for i in l:                           
+  if i not in dict1:
+    dict1[i]=1
+  dict1[i]+=1
 
-c=0
-for i,j in sorted_d.items():
-if c<5:
-print(i,":",j)
-else:
-break
-c+=1
+marklist = sorted(dict1.items(), key=lambda x:x[1],reverse=True)   
+sortdict = dict(marklist)
+
+j=0
+for i in sortdict.keys():
+  if j==5:
+    break
+  print(str(i)+":"+str(sortdict[i]))     
+  j+=1
